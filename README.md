@@ -32,15 +32,24 @@
 ```java
 import com.wxstore.league.headsupplier.WxLeagueHeadSupplierClient;
 import com.wxstore.league.headsupplier.model.headsupplier.GetShopListRequest;
+import com.wxstore.league.headsupplier.model.headsupplier.GetShopListResponse;
+import com.wxstore.league.headsupplier.model.headsupplier.GetShopRequest;
+import com.wxstore.league.headsupplier.model.headsupplier.GetShopResponse;
+import com.wxstore.league.headsupplier.model.headsupplier.GetShopLockTimeRequest;
+import com.wxstore.league.headsupplier.model.headsupplier.GetShopLockTimeResponse;
 
 WxLeagueHeadSupplierClient client = WxLeagueHeadSupplierClient.builder()
         .appId("your-app-id")
         .appSecret("your-app-secret")
         .build();
 
-var response = client.headSupplier().getShopList(GetShopListRequest.of(10));
-response.getShopList().forEach(shop ->
-        System.out.println(shop.getBaseInfo().getNickname()));
+GetShopListResponse list = client.headSupplier().getShopList(GetShopListRequest.of(10));
+list.getShopList().forEach(shop -> System.out.println(shop.getBaseInfo().getNickname()));
+
+// 合作小店详情、锁客时效、更新合作关系
+GetShopResponse shop = client.headSupplier().getShop(GetShopRequest.of("wx_shop_appid"));
+GetShopLockTimeResponse lockTime =
+        client.headSupplier().getShopLockTime(GetShopLockTimeRequest.of("wx_shop_appid"));
 ```
 
 ## 回调处理
