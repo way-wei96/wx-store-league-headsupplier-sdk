@@ -42,6 +42,8 @@ import com.wxstore.league.headsupplier.model.order.GetOrderRequest;
 import com.wxstore.league.headsupplier.model.shop.GetProductDetailRequest;
 import com.wxstore.league.headsupplier.model.shop.GetSubscribeProductListRequest;
 import com.wxstore.league.headsupplier.model.shop.ProductIdRequest;
+import com.wxstore.league.headsupplier.model.balance.GetFundsFlowDetailRequest;
+import com.wxstore.league.headsupplier.model.balance.GetFundsFlowListRequest;
 
 WxLeagueHeadSupplierClient client = WxLeagueHeadSupplierClient.builder()
         .appId("your-app-id")
@@ -64,6 +66,11 @@ var detail = client.order().getOrder(GetOrderRequest.of(123L, 12345L));
 client.shop().getProductDetail(GetProductDetailRequest.of("wx_shop_appid", 1L));
 client.shop().getSubscribeProductList(GetSubscribeProductListRequest.of(20));
 client.shop().subscribeProduct(ProductIdRequest.of(10000207528319L));
+
+// 账户余额与资金流水
+client.balance().getBalance();
+client.balance().getFundsFlowList(GetFundsFlowListRequest.of(10));
+client.balance().getFundsFlowDetail(GetFundsFlowDetailRequest.of("flow_id"));
 ```
 
 ## 回调处理
