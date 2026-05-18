@@ -37,6 +37,8 @@ import com.wxstore.league.headsupplier.model.headsupplier.GetShopRequest;
 import com.wxstore.league.headsupplier.model.headsupplier.GetShopResponse;
 import com.wxstore.league.headsupplier.model.headsupplier.GetShopLockTimeRequest;
 import com.wxstore.league.headsupplier.model.headsupplier.GetShopLockTimeResponse;
+import com.wxstore.league.headsupplier.model.order.GetOrderListRequest;
+import com.wxstore.league.headsupplier.model.order.GetOrderRequest;
 
 WxLeagueHeadSupplierClient client = WxLeagueHeadSupplierClient.builder()
         .appId("your-app-id")
@@ -50,6 +52,10 @@ list.getShopList().forEach(shop -> System.out.println(shop.getBaseInfo().getNick
 GetShopResponse shop = client.headSupplier().getShop(GetShopRequest.of("wx_shop_appid"));
 GetShopLockTimeResponse lockTime =
         client.headSupplier().getShopLockTime(GetShopLockTimeRequest.of("wx_shop_appid"));
+
+// 佣金单列表与详情
+var orders = client.order().getOrderList(GetOrderListRequest.of(10));
+var detail = client.order().getOrder(GetOrderRequest.of(123L, 12345L));
 ```
 
 ## 回调处理
