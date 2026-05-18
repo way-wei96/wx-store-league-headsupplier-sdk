@@ -24,6 +24,8 @@ public final class WxApiPaths {
             "/channels/ec/league/headsupplier/subscription/subscribe";
     public static final String UNSUBSCRIBE_PRODUCT =
             "/channels/ec/league/headsupplier/subscription/unsubscribe";
+    public static final String GET_PRODUCT_ACTIVITY =
+            "/channels/ec/league/headsupplier/product/getactivity";
 
     // --- 订单 ---
     public static final String GET_ORDER = "/channels/ec/league/headsupplier/order/get";

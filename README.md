@@ -39,6 +39,9 @@ import com.wxstore.league.headsupplier.model.headsupplier.GetShopLockTimeRequest
 import com.wxstore.league.headsupplier.model.headsupplier.GetShopLockTimeResponse;
 import com.wxstore.league.headsupplier.model.order.GetOrderListRequest;
 import com.wxstore.league.headsupplier.model.order.GetOrderRequest;
+import com.wxstore.league.headsupplier.model.shop.GetProductDetailRequest;
+import com.wxstore.league.headsupplier.model.shop.GetSubscribeProductListRequest;
+import com.wxstore.league.headsupplier.model.shop.ProductIdRequest;
 
 WxLeagueHeadSupplierClient client = WxLeagueHeadSupplierClient.builder()
         .appId("your-app-id")
@@ -56,6 +59,11 @@ GetShopLockTimeResponse lockTime =
 // 佣金单列表与详情
 var orders = client.order().getOrderList(GetOrderListRequest.of(10));
 var detail = client.order().getOrder(GetOrderRequest.of(123L, 12345L));
+
+// 商品详情、订阅列表、订阅/取消订阅
+client.shop().getProductDetail(GetProductDetailRequest.of("wx_shop_appid", 1L));
+client.shop().getSubscribeProductList(GetSubscribeProductListRequest.of(20));
+client.shop().subscribeProduct(ProductIdRequest.of(10000207528319L));
 ```
 
 ## 回调处理
