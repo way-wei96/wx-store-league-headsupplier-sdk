@@ -3,6 +3,7 @@ package com.wxstore.league.headsupplier;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wxstore.league.headsupplier.api.BalanceApi;
 import com.wxstore.league.headsupplier.api.BasicApi;
+import com.wxstore.league.headsupplier.api.CategoryApi;
 import com.wxstore.league.headsupplier.api.HeadSupplierApi;
 import com.wxstore.league.headsupplier.api.OrderApi;
 import com.wxstore.league.headsupplier.api.SharerApi;
@@ -36,6 +37,7 @@ public final class WxLeagueHeadSupplierClient {
     private final OrderApi orderApi;
     private final BalanceApi balanceApi;
     private final HeadSupplierApi headSupplierApi;
+    private final CategoryApi categoryApi;
     private final SharerApi sharerApi;
 
     private WxLeagueHeadSupplierClient(WxLeagueHeadSupplierConfig config) {
@@ -48,6 +50,7 @@ public final class WxLeagueHeadSupplierClient {
         this.orderApi = new OrderApi(apiExecutor);
         this.balanceApi = new BalanceApi(apiExecutor);
         this.headSupplierApi = new HeadSupplierApi(apiExecutor);
+        this.categoryApi = new CategoryApi(apiExecutor);
         this.sharerApi = new SharerApi(apiExecutor);
     }
 
@@ -89,6 +92,10 @@ public final class WxLeagueHeadSupplierClient {
 
     public HeadSupplierApi headSupplier() {
         return headSupplierApi;
+    }
+
+    public CategoryApi category() {
+        return categoryApi;
     }
 
     public SharerApi sharer() {

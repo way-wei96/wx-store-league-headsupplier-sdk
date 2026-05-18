@@ -32,6 +32,9 @@ public final class WxApiPaths {
     public static final String GET_PRODUCT_ACTIVITY =
             "/channels/ec/league/headsupplier/product/getactivity";
 
+    // --- 类目 ---
+    public static final String GET_ALL_CATEGORY = "/channels/ec/category/league/all";
+
     // --- 订单 ---
     public static final String GET_ORDER = "/channels/ec/league/headsupplier/order/get";
     public static final String GET_ORDER_LIST = "/channels/ec/league/headsupplier/order/list/get";
