@@ -14,6 +14,11 @@ public final class WxApiPaths {
     public static final String GET_STABLE_ACCESS_TOKEN = "/cgi-bin/stable_token";
     public static final String GET_API_QUOTA = "/cgi-bin/openapi/quota/get";
     public static final String CLEAR_QUOTA = "/cgi-bin/clear_quota";
+    public static final String CLEAR_QUOTA_V2 = "/cgi-bin/clear_quota/v2";
+    public static final String CLEAR_API_QUOTA = "/cgi-bin/openapi/quota/clear";
+    public static final String GET_API_DOMAIN_IP = "/cgi-bin/get_api_domain_ip";
+    public static final String GET_CALLBACK_IP = "/cgi-bin/getcallbackip";
+    public static final String CALLBACK_CHECK = "/cgi-bin/callback/check";
 
     // --- 商品 ---
     public static final String GET_PRODUCT_DETAIL =
