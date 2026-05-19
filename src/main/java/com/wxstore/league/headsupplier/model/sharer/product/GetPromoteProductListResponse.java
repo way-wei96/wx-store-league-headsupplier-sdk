@@ -29,6 +29,9 @@ public class GetPromoteProductListResponse extends SharerPageResponse {
         @JsonProperty("shop_appid")
         private String shopAppid;
 
+        @JsonProperty("head_supplier_appid")
+        private String headSupplierAppid;
+
         public Long getProductId() {
             return productId;
         }
@@ -43,6 +46,14 @@ public class GetPromoteProductListResponse extends SharerPageResponse {
 
         public void setShopAppid(String shopAppid) {
             this.shopAppid = shopAppid;
+        }
+
+        public String getHeadSupplierAppid() {
+            return headSupplierAppid;
+        }
+
+        public void setHeadSupplierAppid(String headSupplierAppid) {
+            this.headSupplierAppid = headSupplierAppid;
         }
     }
 }

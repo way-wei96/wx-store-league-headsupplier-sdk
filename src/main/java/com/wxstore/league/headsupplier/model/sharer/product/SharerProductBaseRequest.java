@@ -17,6 +17,21 @@ public class SharerProductBaseRequest extends SharerPageRequest {
     @JsonProperty("head_supplier_appid")
     private String headSupplierAppid;
 
+    @JsonProperty("plan_type")
+    private Integer planType;
+
+    @JsonProperty("get_available_coupon")
+    private Boolean getAvailableCoupon;
+
+    @JsonProperty("custom_token")
+    private String customToken;
+
+    @JsonProperty("keyword")
+    private String keyword;
+
+    @JsonProperty("from_head_supplier_appid")
+    private String fromHeadSupplierAppid;
+
     public String getSharerAppid() {
         return sharerAppid;
     }
@@ -47,5 +62,45 @@ public class SharerProductBaseRequest extends SharerPageRequest {
 
     public void setHeadSupplierAppid(String headSupplierAppid) {
         this.headSupplierAppid = headSupplierAppid;
+    }
+
+    public Integer getPlanType() {
+        return planType;
+    }
+
+    public void setPlanType(Integer planType) {
+        this.planType = planType;
+    }
+
+    public Boolean getGetAvailableCoupon() {
+        return getAvailableCoupon;
+    }
+
+    public void setGetAvailableCoupon(Boolean getAvailableCoupon) {
+        this.getAvailableCoupon = getAvailableCoupon;
+    }
+
+    public String getCustomToken() {
+        return customToken;
+    }
+
+    public void setCustomToken(String customToken) {
+        this.customToken = customToken;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public String getFromHeadSupplierAppid() {
+        return fromHeadSupplierAppid;
+    }
+
+    public void setFromHeadSupplierAppid(String fromHeadSupplierAppid) {
+        this.fromHeadSupplierAppid = fromHeadSupplierAppid;
     }
 }
