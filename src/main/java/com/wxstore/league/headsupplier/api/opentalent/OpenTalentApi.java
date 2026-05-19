@@ -10,12 +10,18 @@ import com.wxstore.league.headsupplier.http.ApiExecutor;
 public final class OpenTalentApi {
 
     private final OpenTalentWindowApi window;
+    private final OpenTalentShopApi shop;
 
     public OpenTalentApi(ApiExecutor executor) {
         this.window = new OpenTalentWindowApi(executor);
+        this.shop = new OpenTalentShopApi(executor);
     }
 
     public OpenTalentWindowApi window() {
         return window;
+    }
+
+    public OpenTalentShopApi shop() {
+        return shop;
     }
 }
