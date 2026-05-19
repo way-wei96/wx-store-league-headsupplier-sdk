@@ -20,4 +20,13 @@ class SharerVideoModelTest {
         assertEquals("f1", response.getFeedList().get(0).getExportId());
         assertEquals(1L, response.getFeedList().get(0).getProductInfo().getProductId());
     }
+
+    @Test
+    void deserializeFeedPromotionInfo() throws Exception {
+        String json =
+                "{\"errcode\":0,\"feed_list\":[{\"export_id\":\"f1\",\"feed_token\":\"tok\","
+                        + "\"promoter_share_link\":\"link\"}]}";
+        GetFeedPromotionInfoResponse response = objectMapper.readValue(json, GetFeedPromotionInfoResponse.class);
+        assertEquals("tok", response.getFeedList().get(0).getFeedToken());
+    }
 }

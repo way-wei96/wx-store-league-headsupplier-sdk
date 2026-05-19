@@ -4,7 +4,7 @@ import com.wxstore.league.headsupplier.WxSharerApiPaths;
 import com.wxstore.league.headsupplier.http.ApiExecutor;
 import com.wxstore.league.headsupplier.model.sharer.video.SharerVideoBaseRequest;
 import com.wxstore.league.headsupplier.model.sharer.video.SharerVideoListResponse;
-import com.wxstore.league.headsupplier.model.sharer.video.SharerVideoPromotionResponse;
+import com.wxstore.league.headsupplier.model.sharer.video.GetFeedPromotionInfoResponse;
 
 /**
  * 推客带货 - 短视频推广。
@@ -21,16 +21,16 @@ public final class SharerVideoApi {
         return executor.post(WxSharerApiPaths.GET_FEED_LIST, request, SharerVideoListResponse.class);
     }
 
-    public SharerVideoPromotionResponse getFeedPromotionInfo(SharerVideoBaseRequest request) {
-        return executor.post(WxSharerApiPaths.GET_FEED_PROMOTION_INFO, request, SharerVideoPromotionResponse.class);
+    public GetFeedPromotionInfoResponse getFeedPromotionInfo(SharerVideoBaseRequest request) {
+        return executor.post(WxSharerApiPaths.GET_FEED_PROMOTION_INFO, request, GetFeedPromotionInfoResponse.class);
     }
 
     public SharerVideoListResponse getShopFeedList(SharerVideoBaseRequest request) {
         return executor.post(WxSharerApiPaths.GET_SHOP_FEED_LIST, request, SharerVideoListResponse.class);
     }
 
-    public SharerVideoPromotionResponse getShopFeedPromotionInfo(SharerVideoBaseRequest request) {
+    public GetFeedPromotionInfoResponse getShopFeedPromotionInfo(SharerVideoBaseRequest request) {
         return executor.post(
-                WxSharerApiPaths.GET_SHOP_FEED_PROMOTION_INFO, request, SharerVideoPromotionResponse.class);
+                WxSharerApiPaths.GET_SHOP_FEED_PROMOTION_INFO, request, GetFeedPromotionInfoResponse.class);
     }
 }
