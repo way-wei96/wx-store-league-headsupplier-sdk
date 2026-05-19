@@ -23,6 +23,9 @@ public class SharerLiveBaseRequest extends SharerPageRequest {
     @JsonProperty("live_id")
     private String liveId;
 
+    @JsonProperty("mini_program_appid")
+    private String miniProgramAppid;
+
     public String getSharerAppid() {
         return sharerAppid;
     }
@@ -69,5 +72,13 @@ public class SharerLiveBaseRequest extends SharerPageRequest {
 
     public void setLiveId(String liveId) {
         this.liveId = liveId;
+    }
+
+    public String getMiniProgramAppid() {
+        return miniProgramAppid;
+    }
+
+    public void setMiniProgramAppid(String miniProgramAppid) {
+        this.miniProgramAppid = miniProgramAppid;
     }
 }
