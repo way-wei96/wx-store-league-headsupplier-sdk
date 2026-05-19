@@ -72,12 +72,15 @@ client.balance().getBalance();
 client.balance().getFundsFlowList(GetFundsFlowListRequest.of(10));
 client.balance().getFundsFlowDetail(GetFundsFlowDetailRequest.of("flow_id"));
 
-// 推客带货（按子模块：account / product / coupon / live / video / article / clue）
-// client.sharer().account().getBindSharerList(...);
+// 推客带货
+import com.wxstore.league.headsupplier.model.sharer.product.SharerProductBaseRequest;
+var productDetail = client.sharer().product().getPromoteProductDetail(
+        SharerProductBaseRequest.forPromoteProductDetail("wx_shop_appid", 12345L, 1));
 
-// 达人带货（橱窗 window / 商品 shop）
-// client.openTalent().window().addWindow(...);
-// client.openTalent().shop().getCooperativeItemList(...);
+// 达人带货
+import com.wxstore.league.headsupplier.model.opentalent.OpenTalentBaseRequest;
+var windowList = client.openTalent().window().getAllWindow(
+        OpenTalentBaseRequest.forWindowList("openfinder_id", 0, 100));
 ```
 
 ## 回调处理
@@ -88,7 +91,8 @@ import com.wxstore.league.headsupplier.callback.CallbackMessageParser;
 import com.wxstore.league.headsupplier.model.callback.HeadSupplierCommissionOrderUpdateEvent;
 import com.wxstore.league.headsupplier.model.callback.PromoterBindEvent;
 
-CallbackCrypto crypto = new CallbackCrypto(token, encodingAesKey, appId);
+CallbackCrypto crypto = client.createCallbackCrypto(token, encodingAesKey);
+CallbackMessageParser eventParser = client.createCallbackMessageParser();
 
 // GET 校验（明文模式）
 boolean ok = crypto.verifySignature(signature, timestamp, nonce);
@@ -96,7 +100,6 @@ boolean ok = crypto.verifySignature(signature, timestamp, nonce);
 // POST 解密（安全模式）
 String plainJson = crypto.parseAndDecrypt(body, msgSignature, timestamp, nonce);
 
-CallbackMessageParser eventParser = new CallbackMessageParser();
 var event = eventParser.parse(plainJson);
 if (event instanceof PromoterBindEvent bind) {
     System.out.println(bind.getSharerAppid() + " status=" + bind.getBindStatus());
@@ -145,6 +148,10 @@ src/main/java/com/wxstore/league/headsupplier/
 ```bash
 mvn -q test package
 ```
+
+## 变更记录
+
+见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## 文档
 

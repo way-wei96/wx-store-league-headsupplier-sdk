@@ -9,6 +9,8 @@ import com.wxstore.league.headsupplier.api.OrderApi;
 import com.wxstore.league.headsupplier.api.SharerApi;
 import com.wxstore.league.headsupplier.api.ShopApi;
 import com.wxstore.league.headsupplier.api.opentalent.OpenTalentApi;
+import com.wxstore.league.headsupplier.callback.CallbackCrypto;
+import com.wxstore.league.headsupplier.callback.CallbackMessageParser;
 import com.wxstore.league.headsupplier.config.WxLeagueHeadSupplierConfig;
 import com.wxstore.league.headsupplier.http.ApiExecutor;
 import com.wxstore.league.headsupplier.http.JsonMapperFactory;
@@ -107,6 +109,16 @@ public final class WxLeagueHeadSupplierClient {
 
     public OpenTalentApi openTalent() {
         return openTalentApi;
+    }
+
+    /** 使用当前机构 appId 创建回调加解密工具。 */
+    public CallbackCrypto createCallbackCrypto(String token, String encodingAesKey) {
+        return new CallbackCrypto(token, encodingAesKey, config.getAppId(), objectMapper);
+    }
+
+    /** 使用与 Client 相同的 JSON 配置创建回调事件解析器。 */
+    public CallbackMessageParser createCallbackMessageParser() {
+        return new CallbackMessageParser(objectMapper);
     }
 
     public static final class Builder {

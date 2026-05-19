@@ -5,6 +5,20 @@ import com.wxstore.league.headsupplier.model.sharer.SharerPageRequest;
 
 public class OpenTalentBaseRequest extends SharerPageRequest {
 
+    public static OpenTalentBaseRequest forWindowList(String openfinderid, int offset, int pageSize) {
+        OpenTalentBaseRequest request = new OpenTalentBaseRequest();
+        request.setOpenfinderid(openfinderid);
+        request.setOffset(offset);
+        request.setPageSize(pageSize);
+        return request;
+    }
+
+    public static OpenTalentBaseRequest forItemPromotionDetail(String headSupplierItemLink) {
+        OpenTalentBaseRequest request = new OpenTalentBaseRequest();
+        request.setHeadSupplierItemLink(headSupplierItemLink);
+        return request;
+    }
+
     @JsonProperty("finder_id")
     private String finderId;
 

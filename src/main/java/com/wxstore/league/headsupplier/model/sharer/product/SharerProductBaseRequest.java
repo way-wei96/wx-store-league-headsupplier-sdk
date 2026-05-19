@@ -6,6 +6,23 @@ import com.wxstore.league.headsupplier.model.sharer.SharerPageRequest;
 
 public class SharerProductBaseRequest extends SharerPageRequest {
 
+    public static SharerProductBaseRequest forPromoteProductDetail(
+            String shopAppid, long productId, int planType) {
+        SharerProductBaseRequest request = new SharerProductBaseRequest();
+        request.setShopAppid(shopAppid);
+        request.setProductId(productId);
+        request.setPlanType(planType);
+        return request;
+    }
+
+    public static SharerProductBaseRequest forPromoteProductList(int planType, int pageSize) {
+        SharerProductBaseRequest request = new SharerProductBaseRequest();
+        request.setPlanType(planType);
+        request.setPageSize(pageSize);
+        request.setNextKey("");
+        return request;
+    }
+
     @JsonProperty("sharer_appid")
     private String sharerAppid;
 
