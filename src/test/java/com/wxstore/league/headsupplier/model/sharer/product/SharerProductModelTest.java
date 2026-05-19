@@ -44,4 +44,18 @@ class SharerProductModelTest {
         assertEquals(1, objectMapper.readTree(json).get("plan_type").asInt());
         assertNotNull(objectMapper.readTree(json).get("page_size"));
     }
+
+    @Test
+    void serializeProductListWithCondition() throws Exception {
+        SharerProductBaseRequest request = new SharerProductBaseRequest();
+        request.setPlanType(1);
+        request.setKeyword("纸巾");
+        SharerProductBaseRequest.SpuItemCondition condition = new SharerProductBaseRequest.SpuItemCondition();
+        SharerProductBaseRequest.MinMaxRange range = new SharerProductBaseRequest.MinMaxRange();
+        range.setMax(100000L);
+        condition.setCommissionRateRange(range);
+        request.setSpuItemCondition(condition);
+        String json = objectMapper.writeValueAsString(request);
+        assertEquals("纸巾", objectMapper.readTree(json).get("keyword").asText());
+    }
 }

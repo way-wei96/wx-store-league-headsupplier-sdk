@@ -1,5 +1,6 @@
 package com.wxstore.league.headsupplier.model.sharer.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.wxstore.league.headsupplier.model.sharer.SharerPageRequest;
 
@@ -31,6 +32,12 @@ public class SharerProductBaseRequest extends SharerPageRequest {
 
     @JsonProperty("from_head_supplier_appid")
     private String fromHeadSupplierAppid;
+
+    @JsonProperty("spu_item_condition")
+    private SpuItemCondition spuItemCondition;
+
+    @JsonProperty("category")
+    private ProductCategoryQuery category;
 
     public String getSharerAppid() {
         return sharerAppid;
@@ -102,5 +109,121 @@ public class SharerProductBaseRequest extends SharerPageRequest {
 
     public void setFromHeadSupplierAppid(String fromHeadSupplierAppid) {
         this.fromHeadSupplierAppid = fromHeadSupplierAppid;
+    }
+
+    public SpuItemCondition getSpuItemCondition() {
+        return spuItemCondition;
+    }
+
+    public void setSpuItemCondition(SpuItemCondition spuItemCondition) {
+        this.spuItemCondition = spuItemCondition;
+    }
+
+    public ProductCategoryQuery getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategoryQuery category) {
+        this.category = category;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class MinMaxRange {
+
+        @JsonProperty("min")
+        private Long min;
+
+        @JsonProperty("max")
+        private Long max;
+
+        public Long getMin() {
+            return min;
+        }
+
+        public void setMin(Long min) {
+            this.min = min;
+        }
+
+        public Long getMax() {
+            return max;
+        }
+
+        public void setMax(Long max) {
+            this.max = max;
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class SpuItemCondition {
+
+        @JsonProperty("selling_price_range")
+        private MinMaxRange sellingPriceRange;
+
+        @JsonProperty("monthly_sales_range")
+        private MinMaxRange monthlySalesRange;
+
+        @JsonProperty("service_fee_rate_range")
+        private MinMaxRange serviceFeeRateRange;
+
+        @JsonProperty("commission_rate_range")
+        private MinMaxRange commissionRateRange;
+
+        public MinMaxRange getSellingPriceRange() {
+            return sellingPriceRange;
+        }
+
+        public void setSellingPriceRange(MinMaxRange sellingPriceRange) {
+            this.sellingPriceRange = sellingPriceRange;
+        }
+
+        public MinMaxRange getMonthlySalesRange() {
+            return monthlySalesRange;
+        }
+
+        public void setMonthlySalesRange(MinMaxRange monthlySalesRange) {
+            this.monthlySalesRange = monthlySalesRange;
+        }
+
+        public MinMaxRange getServiceFeeRateRange() {
+            return serviceFeeRateRange;
+        }
+
+        public void setServiceFeeRateRange(MinMaxRange serviceFeeRateRange) {
+            this.serviceFeeRateRange = serviceFeeRateRange;
+        }
+
+        public MinMaxRange getCommissionRateRange() {
+            return commissionRateRange;
+        }
+
+        public void setCommissionRateRange(MinMaxRange commissionRateRange) {
+            this.commissionRateRange = commissionRateRange;
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class ProductCategoryQuery {
+
+        @JsonProperty("category_id")
+        private Long categoryId;
+
+        @JsonProperty("category_name")
+        private String categoryName;
+
+        public Long getCategoryId() {
+            return categoryId;
+        }
+
+        public void setCategoryId(Long categoryId) {
+            this.categoryId = categoryId;
+        }
+
+        public String getCategoryName() {
+            return categoryName;
+        }
+
+        public void setCategoryName(String categoryName) {
+            this.categoryName = categoryName;
+        }
     }
 }
