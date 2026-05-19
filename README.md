@@ -71,6 +71,9 @@ client.shop().subscribeProduct(ProductIdRequest.of(10000207528319L));
 client.balance().getBalance();
 client.balance().getFundsFlowList(GetFundsFlowListRequest.of(10));
 client.balance().getFundsFlowDetail(GetFundsFlowDetailRequest.of("flow_id"));
+
+// 推客带货（按子模块：account / product / coupon / live / video / article / clue）
+// client.sharer().account().getBindSharerList(...);
 ```
 
 ## 回调处理
