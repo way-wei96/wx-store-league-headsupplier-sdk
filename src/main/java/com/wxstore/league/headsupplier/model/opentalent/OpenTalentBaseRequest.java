@@ -29,6 +29,12 @@ public class OpenTalentBaseRequest extends SharerPageRequest {
     @JsonProperty("is_hide_for_window")
     private Boolean isHideForWindow;
 
+    @JsonProperty("commission_type")
+    private Integer commissionType;
+
+    @JsonProperty("listing_time_range")
+    private ListingTimeRange listingTimeRange;
+
     public String getFinderId() {
         return finderId;
     }
@@ -91,5 +97,46 @@ public class OpenTalentBaseRequest extends SharerPageRequest {
 
     public void setIsHideForWindow(Boolean isHideForWindow) {
         this.isHideForWindow = isHideForWindow;
+    }
+
+    public Integer getCommissionType() {
+        return commissionType;
+    }
+
+    public void setCommissionType(Integer commissionType) {
+        this.commissionType = commissionType;
+    }
+
+    public ListingTimeRange getListingTimeRange() {
+        return listingTimeRange;
+    }
+
+    public void setListingTimeRange(ListingTimeRange listingTimeRange) {
+        this.listingTimeRange = listingTimeRange;
+    }
+
+    public static class ListingTimeRange {
+
+        @JsonProperty("min")
+        private Long min;
+
+        @JsonProperty("max")
+        private Long max;
+
+        public Long getMin() {
+            return min;
+        }
+
+        public void setMin(Long min) {
+            this.min = min;
+        }
+
+        public Long getMax() {
+            return max;
+        }
+
+        public void setMax(Long max) {
+            this.max = max;
+        }
     }
 }
