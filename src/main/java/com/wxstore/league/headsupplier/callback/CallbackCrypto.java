@@ -171,6 +171,22 @@ public final class CallbackCrypto {
             this.nonce = nonce;
         }
 
+        public String getEncrypt() {
+            return encrypt;
+        }
+
+        public String getMsgSignature() {
+            return msgSignature;
+        }
+
+        public String getTimeStamp() {
+            return timeStamp;
+        }
+
+        public String getNonce() {
+            return nonce;
+        }
+
         public String toJson() {
             return String.format(
                     "{\"Encrypt\":\"%s\",\"MsgSignature\":\"%s\",\"TimeStamp\":%s,\"Nonce\":\"%s\"}",

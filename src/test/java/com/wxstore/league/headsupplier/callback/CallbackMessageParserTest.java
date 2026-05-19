@@ -1,8 +1,11 @@
 package com.wxstore.league.headsupplier.callback;
 
+import com.wxstore.league.headsupplier.model.callback.ApiDiffEvent;
 import com.wxstore.league.headsupplier.model.callback.CallbackEventTypes;
 import com.wxstore.league.headsupplier.model.callback.HeadSupplierCommissionOrderUpdateEvent;
 import com.wxstore.league.headsupplier.model.callback.HeadSupplierItemUpdateEvent;
+import com.wxstore.league.headsupplier.model.callback.HeadSupplierSubscribeProductBaseInfoUpdateEvent;
+import com.wxstore.league.headsupplier.model.callback.HeadSupplierSubscribeProductPlanInfoUpdateEvent;
 import com.wxstore.league.headsupplier.model.callback.PromoterBindEvent;
 import com.wxstore.league.headsupplier.model.callback.TalentWindowCancelAuthEvent;
 import org.junit.jupiter.api.Test;
@@ -64,5 +67,43 @@ class CallbackMessageParserTest {
         TalentWindowCancelAuthEvent auth = (TalentWindowCancelAuthEvent) event;
         assertEquals("t1", auth.getItemInfo().getTalentInfo().getOpentalentid());
         assertEquals("nick", auth.getItemInfo().getTalentInfo().getNickname());
+    }
+
+    @Test
+    void parseSubscribeProductBaseInfoUpdateEvent() throws Exception {
+        String json =
+                "{\"Event\":\"head_supplier_subscribe_product_baseinfo_update\",\"MsgType\":\"event\","
+                        + "\"item_info\":{\"appid\":\"wx_shop\",\"product_id\":\"1001\",\"version\":\"21\","
+                        + "\"status\":5,\"product_info\":{\"title\":\"商品标题\"}}}";
+        var event = parser.parse(json);
+        assertInstanceOf(HeadSupplierSubscribeProductBaseInfoUpdateEvent.class, event);
+        HeadSupplierSubscribeProductBaseInfoUpdateEvent base = (HeadSupplierSubscribeProductBaseInfoUpdateEvent) event;
+        assertEquals("1001", base.getItemInfo().getProductId());
+        assertEquals("商品标题", base.getItemInfo().getProductInfo().getTitle());
+    }
+
+    @Test
+    void parseSubscribeProductPlanInfoUpdateEvent() throws Exception {
+        String json =
+                "{\"Event\":\"head_supplier_subscribe_product_planinfo_update\",\"MsgType\":\"event\","
+                        + "\"item_info\":{\"event_type\":2,\"appid\":\"wx_shop\",\"product_id\":\"1001\","
+                        + "\"plan_id\":\"2001\",\"commission_ratio\":200000}}";
+        var event = parser.parse(json);
+        assertInstanceOf(HeadSupplierSubscribeProductPlanInfoUpdateEvent.class, event);
+        HeadSupplierSubscribeProductPlanInfoUpdateEvent plan = (HeadSupplierSubscribeProductPlanInfoUpdateEvent) event;
+        assertEquals("2001", plan.getItemInfo().getPlanId());
+        assertEquals(200000, plan.getItemInfo().getCommissionRatio());
+    }
+
+    @Test
+    void parseApiDiffEvent() throws Exception {
+        String json =
+                "{\"Event\":\"api_diff\",\"MsgType\":\"event\","
+                        + "\"api_diff_list\":[{\"api_name\":\"getorder\",\"change_type\":1,"
+                        + "\"change_desc\":\"字段更新\"}]}";
+        var event = parser.parse(json);
+        assertInstanceOf(ApiDiffEvent.class, event);
+        ApiDiffEvent diff = (ApiDiffEvent) event;
+        assertEquals("getorder", diff.getApiDiffList().get(0).getApiName());
     }
 }
