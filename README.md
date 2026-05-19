@@ -114,16 +114,31 @@ return reply.toJson();
 ```
 src/main/java/com/wxstore/league/headsupplier/
 ├── WxLeagueHeadSupplierClient.java   # 入口
-├── WxApiPaths.java                   # 官方路径索引
+├── WxApiPaths.java                   # 基础/商品/订单/资金/合作小店等路径
+├── WxSharerApiPaths.java             # 推客带货路径
+├── WxOpenTalentApiPaths.java         # 达人带货路径
 ├── api/                              # 按业务分组的 API 客户端
-├── callback/                         # 回调验签与加解密
+├── callback/                         # 回调验签、加解密与事件解析
 ├── config/                           # 配置
 ├── http/                             # HTTP 与 JSON
-├── model/                            # 请求/响应模型
+├── model/                            # 请求/响应与回调事件模型
 └── token/                            # Access Token 缓存
 ```
 
-各 `*Api` 类按[官方文档目录](https://developers.weixin.qq.com/doc/store/leagueheadsupplier/api/)逐步补全；尚未封装的方法可通过 `client.getApiExecutor().post(path, body, XxxResponse.class)` 直接调用。
+## API 覆盖一览
+
+| 模块 | 入口 | 说明 |
+|------|------|------|
+| 基础 | `client.basic()` | Token、配额、IP、回调校验 |
+| 合作小店 | `client.headSupplier()` | 小店列表/详情、锁客、合作关系 |
+| 商品 | `client.shop()` | 详情、订阅、活动 |
+| 类目 | `client.category()` | 全量类目 |
+| 佣金单 | `client.order()` | 列表、详情 |
+| 资金 | `client.balance()` | 余额、流水 |
+| 推客带货 | `client.sharer()` | account / product / coupon / live / video / article / clue |
+| 达人带货 | `client.openTalent()` | window / shop |
+
+[官方文档](https://developers.weixin.qq.com/doc/store/leagueheadsupplier/api/) 所列 HTTPS 路径均已通过 `*Api` 封装；复杂嵌套字段的强类型模型仍在按需补充。未建模的字段可用 `@JsonIgnoreProperties(ignoreUnknown = true)` 的响应类或 `client.getApiExecutor().post(path, body, XxxResponse.class)` 扩展。
 
 ## 构建
 
@@ -135,6 +150,8 @@ mvn -q test package
 
 - [联盟带货机构 API](https://developers.weixin.qq.com/doc/store/leagueheadsupplier/api/)
 - [回调加解密](https://developers.weixin.qq.com/doc/store/leagueheadsupplier/callback/allback_encoding.html)
+
+回调事件（`CallbackMessageParser`）：`head_supplier_item_update`、`head_supplier_commission_order_update`、`head_supplier_subscribe_product_baseinfo_update`、`head_supplier_subscribe_product_planinfo_update`、`promoter_bind_result`、`talent_window_cancel_auth`、`api_diff`。
 
 ## License
 
