@@ -1,6 +1,7 @@
 package com.wxstore.league.headsupplier.api;
 
 import com.wxstore.league.headsupplier.api.sharer.SharerAccountApi;
+import com.wxstore.league.headsupplier.api.sharer.SharerProductApi;
 import com.wxstore.league.headsupplier.http.ApiExecutor;
 
 /**
@@ -11,13 +12,19 @@ import com.wxstore.league.headsupplier.http.ApiExecutor;
 public final class SharerApi {
 
     private final SharerAccountApi account;
+    private final SharerProductApi product;
 
     public SharerApi(ApiExecutor executor) {
         this.account = new SharerAccountApi(executor);
+        this.product = new SharerProductApi(executor);
     }
 
     public SharerAccountApi account() {
         return account;
+    }
+
+    public SharerProductApi product() {
+        return product;
     }
 
     public ApiExecutor getExecutor() {
