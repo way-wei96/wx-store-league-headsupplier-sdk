@@ -26,6 +26,12 @@ public class SharerLiveBaseRequest extends SharerPageRequest {
     @JsonProperty("mini_program_appid")
     private String miniProgramAppid;
 
+    @JsonProperty("start_time")
+    private Long startTime;
+
+    @JsonProperty("end_time")
+    private Long endTime;
+
     public String getSharerAppid() {
         return sharerAppid;
     }
@@ -80,5 +86,21 @@ public class SharerLiveBaseRequest extends SharerPageRequest {
 
     public void setMiniProgramAppid(String miniProgramAppid) {
         this.miniProgramAppid = miniProgramAppid;
+    }
+
+    public Long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
+    }
+
+    public Long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Long endTime) {
+        this.endTime = endTime;
     }
 }

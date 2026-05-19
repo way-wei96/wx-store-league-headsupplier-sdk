@@ -36,4 +36,23 @@ class SharerLiveModelTest {
         SharerLiveListResponse response = objectMapper.readValue(json, SharerLiveListResponse.class);
         assertEquals("n1", response.getLiveNoticeRecordList().get(0).getNoticeId());
     }
+
+    @Test
+    void deserializeLiveNoticeStats() throws Exception {
+        String json =
+                "{\"errcode\":0,\"notice_count\":5,\"notice_user_count\":1,"
+                        + "\"join_count\":3,\"join_user_count\":2}";
+        SharerLiveStatsResponse response = objectMapper.readValue(json, SharerLiveStatsResponse.class);
+        assertEquals(5L, response.getNoticeCount());
+        assertEquals(2L, response.getJoinUserCount());
+    }
+
+    @Test
+    void deserializePromoterLiveStats() throws Exception {
+        String json =
+                "{\"errcode\":0,\"share_count\":5,\"share_user_count\":1,"
+                        + "\"join_count\":3,\"join_user_count\":2}";
+        SharerLiveStatsResponse response = objectMapper.readValue(json, SharerLiveStatsResponse.class);
+        assertEquals(5L, response.getShareCount());
+    }
 }
