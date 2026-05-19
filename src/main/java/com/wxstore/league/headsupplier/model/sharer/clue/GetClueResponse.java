@@ -7,14 +7,14 @@ import com.wxstore.league.headsupplier.model.common.WxApiResponse;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GetClueResponse extends WxApiResponse {
 
-    @JsonProperty("clue_detail")
-    private Object clueDetail;
+    @JsonProperty("commssion_clue")
+    private CommissionClue commissionClue;
 
-    public Object getClueDetail() {
-        return clueDetail;
+    public CommissionClue getCommissionClue() {
+        return commissionClue;
     }
 
-    public void setClueDetail(Object clueDetail) {
-        this.clueDetail = clueDetail;
+    public void setCommissionClue(CommissionClue commissionClue) {
+        this.commissionClue = commissionClue;
     }
 }
