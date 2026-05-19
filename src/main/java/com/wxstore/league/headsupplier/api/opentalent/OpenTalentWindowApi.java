@@ -6,8 +6,8 @@ import com.wxstore.league.headsupplier.model.common.WxApiResponse;
 import com.wxstore.league.headsupplier.model.opentalent.GetWindowAuthResponse;
 import com.wxstore.league.headsupplier.model.opentalent.GetWindowAuthStatusResponse;
 import com.wxstore.league.headsupplier.model.opentalent.OpenTalentBaseRequest;
-import com.wxstore.league.headsupplier.model.opentalent.OpenTalentDetailResponse;
-import com.wxstore.league.headsupplier.model.opentalent.OpenTalentListResponse;
+import com.wxstore.league.headsupplier.model.opentalent.GetWindowDetailResponse;
+import com.wxstore.league.headsupplier.model.opentalent.OpenTalentWindowListResponse;
 
 /**
  * 达人带货 - 橱窗管理。
@@ -33,12 +33,12 @@ public final class OpenTalentWindowApi {
                 WxOpenTalentApiPaths.WINDOW_AUTH_STATUS_GET, request, GetWindowAuthStatusResponse.class);
     }
 
-    public OpenTalentDetailResponse getWindowDetail(OpenTalentBaseRequest request) {
-        return executor.post(WxOpenTalentApiPaths.WINDOW_GET_DETAIL, request, OpenTalentDetailResponse.class);
+    public GetWindowDetailResponse getWindowDetail(OpenTalentBaseRequest request) {
+        return executor.post(WxOpenTalentApiPaths.WINDOW_GET_DETAIL, request, GetWindowDetailResponse.class);
     }
 
-    public OpenTalentListResponse getAllWindow(OpenTalentBaseRequest request) {
-        return executor.post(WxOpenTalentApiPaths.WINDOW_GET_ALL, request, OpenTalentListResponse.class);
+    public OpenTalentWindowListResponse getAllWindow(OpenTalentBaseRequest request) {
+        return executor.post(WxOpenTalentApiPaths.WINDOW_GET_ALL, request, OpenTalentWindowListResponse.class);
     }
 
     public WxApiResponse removeWindow(OpenTalentBaseRequest request) {

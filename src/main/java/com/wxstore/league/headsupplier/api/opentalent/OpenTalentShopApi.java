@@ -4,7 +4,7 @@ import com.wxstore.league.headsupplier.WxOpenTalentApiPaths;
 import com.wxstore.league.headsupplier.http.ApiExecutor;
 import com.wxstore.league.headsupplier.model.common.WxApiResponse;
 import com.wxstore.league.headsupplier.model.opentalent.OpenTalentBaseRequest;
-import com.wxstore.league.headsupplier.model.opentalent.OpenTalentDetailResponse;
+import com.wxstore.league.headsupplier.model.opentalent.GetItemPromotionDetailResponse;
 import com.wxstore.league.headsupplier.model.opentalent.OpenTalentListResponse;
 
 /**
@@ -28,9 +28,9 @@ public final class OpenTalentShopApi {
                 WxOpenTalentApiPaths.SELECTION_PRODUCTS_LIST_GET, request, OpenTalentListResponse.class);
     }
 
-    public OpenTalentDetailResponse getItemPromotionDetail(OpenTalentBaseRequest request) {
+    public GetItemPromotionDetailResponse getItemPromotionDetail(OpenTalentBaseRequest request) {
         return executor.post(
-                WxOpenTalentApiPaths.ITEM_PROMOTION_DETAIL_GET, request, OpenTalentDetailResponse.class);
+                WxOpenTalentApiPaths.ITEM_PROMOTION_DETAIL_GET, request, GetItemPromotionDetailResponse.class);
     }
 
     public WxApiResponse addSubItem(OpenTalentBaseRequest request) {

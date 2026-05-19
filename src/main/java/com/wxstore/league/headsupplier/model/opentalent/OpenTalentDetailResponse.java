@@ -4,39 +4,43 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.wxstore.league.headsupplier.model.common.WxApiResponse;
 
+/**
+ * @deprecated 请改用 {@link GetWindowDetailResponse} 或 {@link GetItemPromotionDetailResponse}
+ */
+@Deprecated
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OpenTalentDetailResponse extends WxApiResponse {
 
-    @JsonProperty("window_item")
-    private Object windowItem;
+    @JsonProperty("product_detail")
+    private WindowProductDetail productDetail;
 
     @JsonProperty("item")
-    private Object item;
+    private ItemPromotionDetail item;
 
-    @JsonProperty("promotion_detail")
-    private Object promotionDetail;
+    @JsonProperty("window_item")
+    private OpenTalentWindowItem windowItem;
 
-    public Object getWindowItem() {
-        return windowItem;
+    public WindowProductDetail getProductDetail() {
+        return productDetail;
     }
 
-    public void setWindowItem(Object windowItem) {
-        this.windowItem = windowItem;
+    public void setProductDetail(WindowProductDetail productDetail) {
+        this.productDetail = productDetail;
     }
 
-    public Object getItem() {
+    public ItemPromotionDetail getItem() {
         return item;
     }
 
-    public void setItem(Object item) {
+    public void setItem(ItemPromotionDetail item) {
         this.item = item;
     }
 
-    public Object getPromotionDetail() {
-        return promotionDetail;
+    public OpenTalentWindowItem getWindowItem() {
+        return windowItem;
     }
 
-    public void setPromotionDetail(Object promotionDetail) {
-        this.promotionDetail = promotionDetail;
+    public void setWindowItem(OpenTalentWindowItem windowItem) {
+        this.windowItem = windowItem;
     }
 }

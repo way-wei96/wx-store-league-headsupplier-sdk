@@ -35,6 +35,21 @@ public class OpenTalentBaseRequest extends SharerPageRequest {
     @JsonProperty("listing_time_range")
     private ListingTimeRange listingTimeRange;
 
+    @JsonProperty("offset")
+    private Integer offset;
+
+    @JsonProperty("need_total_num")
+    private Boolean needTotalNum;
+
+    @JsonProperty("is_get_all")
+    private Boolean isGetAll;
+
+    @JsonProperty("product_window_id")
+    private Long productWindowId;
+
+    @JsonProperty("appid")
+    private String appid;
+
     public String getFinderId() {
         return finderId;
     }
@@ -113,6 +128,46 @@ public class OpenTalentBaseRequest extends SharerPageRequest {
 
     public void setListingTimeRange(ListingTimeRange listingTimeRange) {
         this.listingTimeRange = listingTimeRange;
+    }
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
+    public Boolean getNeedTotalNum() {
+        return needTotalNum;
+    }
+
+    public void setNeedTotalNum(Boolean needTotalNum) {
+        this.needTotalNum = needTotalNum;
+    }
+
+    public Boolean getIsGetAll() {
+        return isGetAll;
+    }
+
+    public void setIsGetAll(Boolean isGetAll) {
+        this.isGetAll = isGetAll;
+    }
+
+    public Long getProductWindowId() {
+        return productWindowId;
+    }
+
+    public void setProductWindowId(Long productWindowId) {
+        this.productWindowId = productWindowId;
+    }
+
+    public String getAppid() {
+        return appid;
+    }
+
+    public void setAppid(String appid) {
+        this.appid = appid;
     }
 
     public static class ListingTimeRange {
