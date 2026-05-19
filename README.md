@@ -84,6 +84,9 @@ client.balance().getFundsFlowDetail(GetFundsFlowDetailRequest.of("flow_id"));
 
 ```java
 import com.wxstore.league.headsupplier.callback.CallbackCrypto;
+import com.wxstore.league.headsupplier.callback.CallbackMessageParser;
+import com.wxstore.league.headsupplier.model.callback.HeadSupplierCommissionOrderUpdateEvent;
+import com.wxstore.league.headsupplier.model.callback.PromoterBindEvent;
 
 CallbackCrypto crypto = new CallbackCrypto(token, encodingAesKey, appId);
 
@@ -92,6 +95,14 @@ boolean ok = crypto.verifySignature(signature, timestamp, nonce);
 
 // POST 解密（安全模式）
 String plainJson = crypto.parseAndDecrypt(body, msgSignature, timestamp, nonce);
+
+CallbackMessageParser eventParser = new CallbackMessageParser();
+var event = eventParser.parse(plainJson);
+if (event instanceof PromoterBindEvent bind) {
+    System.out.println(bind.getSharerAppid() + " status=" + bind.getBindStatus());
+} else if (event instanceof HeadSupplierCommissionOrderUpdateEvent orderEvt) {
+    System.out.println(orderEvt.getOrderInfo().getOrderId());
+}
 
 // 加密回复
 var reply = crypto.encryptReply("{\"demo_resp\":\"good luck\"}");
