@@ -17,15 +17,26 @@
 
 ## 引入
 
+**当前最新发布：[v0.1.0](https://github.com/way-wei96/wx-store-league-headsupplier-sdk/releases/tag/v0.1.0)**（SemVer `0.1.0`，API 在 `0.x` 阶段仍可能做小范围不兼容调整，详见 [CHANGELOG.md](CHANGELOG.md)）。
+
+### 从源码安装（推荐，直至上架 Maven Central）
+
+```bash
+git clone https://github.com/way-wei96/wx-store-league-headsupplier-sdk.git
+cd wx-store-league-headsupplier-sdk
+git checkout v0.1.0
+mvn -q test install
+```
+
 ```xml
 <dependency>
     <groupId>com.wxstore.league</groupId>
     <artifactId>wx-store-league-headsupplier-sdk</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 </dependency>
 ```
 
-> 发布到 Maven Central 前，需先 `mvn install` 到本地，或配置 GitHub Packages 等私服地址。
+> 后续若发布到 Maven Central / GitHub Packages，可直接用坐标引入，无需本地 `install`。
 
 ## 快速开始
 
