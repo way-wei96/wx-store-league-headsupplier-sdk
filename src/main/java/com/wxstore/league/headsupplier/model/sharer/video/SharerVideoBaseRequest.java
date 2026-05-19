@@ -20,6 +20,9 @@ public class SharerVideoBaseRequest extends SharerPageRequest {
     @JsonProperty("feed_id")
     private String feedId;
 
+    @JsonProperty("finder_exportusername")
+    private String finderExportusername;
+
     public String getSharerAppid() {
         return sharerAppid;
     }
@@ -58,5 +61,13 @@ public class SharerVideoBaseRequest extends SharerPageRequest {
 
     public void setFeedId(String feedId) {
         this.feedId = feedId;
+    }
+
+    public String getFinderExportusername() {
+        return finderExportusername;
+    }
+
+    public void setFinderExportusername(String finderExportusername) {
+        this.finderExportusername = finderExportusername;
     }
 }

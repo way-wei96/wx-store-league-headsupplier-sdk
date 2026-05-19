@@ -8,13 +8,13 @@ import com.wxstore.league.headsupplier.model.common.WxApiResponse;
 public class SharerCouponDetailResponse extends WxApiResponse {
 
     @JsonProperty("coupon")
-    private Object coupon;
+    private CouponInfo coupon;
 
-    public Object getCoupon() {
+    public CouponInfo getCoupon() {
         return coupon;
     }
 
-    public void setCoupon(Object coupon) {
+    public void setCoupon(CouponInfo coupon) {
         this.coupon = coupon;
     }
 }

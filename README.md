@@ -138,7 +138,7 @@ src/main/java/com/wxstore/league/headsupplier/
 | 推客带货 | `client.sharer()` | account / product / coupon / live / video / article / clue |
 | 达人带货 | `client.openTalent()` | window / shop |
 
-[官方文档](https://developers.weixin.qq.com/doc/store/leagueheadsupplier/api/) 所列 HTTPS 路径均已通过 `*Api` 封装；复杂嵌套字段的强类型模型仍在按需补充。未建模的字段可用 `@JsonIgnoreProperties(ignoreUnknown = true)` 的响应类或 `client.getApiExecutor().post(path, body, XxxResponse.class)` 扩展。
+[官方文档](https://developers.weixin.qq.com/doc/store/leagueheadsupplier/api/) 所列 HTTPS 路径均已通过 `*Api` 封装。推客带货 `product` / `live` / `video` / `article` / `coupon` 子模块已提供常用请求字段与列表/详情响应类型；更深嵌套结构仍可通过 `ignoreUnknown` 扩展。未建模接口可用 `client.getApiExecutor().post(path, body, XxxResponse.class)` 调用。
 
 ## 构建
 
