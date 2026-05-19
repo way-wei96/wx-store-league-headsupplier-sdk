@@ -74,6 +74,9 @@ client.balance().getFundsFlowDetail(GetFundsFlowDetailRequest.of("flow_id"));
 
 // 推客带货（按子模块：account / product / coupon / live / video / article / clue）
 // client.sharer().account().getBindSharerList(...);
+
+// 达人带货-橱窗
+// client.openTalent().window().addWindow(...);
 ```
 
 ## 回调处理

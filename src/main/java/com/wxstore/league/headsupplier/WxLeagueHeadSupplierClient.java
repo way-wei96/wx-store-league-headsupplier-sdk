@@ -8,6 +8,7 @@ import com.wxstore.league.headsupplier.api.HeadSupplierApi;
 import com.wxstore.league.headsupplier.api.OrderApi;
 import com.wxstore.league.headsupplier.api.SharerApi;
 import com.wxstore.league.headsupplier.api.ShopApi;
+import com.wxstore.league.headsupplier.api.opentalent.OpenTalentApi;
 import com.wxstore.league.headsupplier.config.WxLeagueHeadSupplierConfig;
 import com.wxstore.league.headsupplier.http.ApiExecutor;
 import com.wxstore.league.headsupplier.http.JsonMapperFactory;
@@ -39,6 +40,7 @@ public final class WxLeagueHeadSupplierClient {
     private final HeadSupplierApi headSupplierApi;
     private final CategoryApi categoryApi;
     private final SharerApi sharerApi;
+    private final OpenTalentApi openTalentApi;
 
     private WxLeagueHeadSupplierClient(WxLeagueHeadSupplierConfig config) {
         this.config = config;
@@ -52,6 +54,7 @@ public final class WxLeagueHeadSupplierClient {
         this.headSupplierApi = new HeadSupplierApi(apiExecutor);
         this.categoryApi = new CategoryApi(apiExecutor);
         this.sharerApi = new SharerApi(apiExecutor);
+        this.openTalentApi = new OpenTalentApi(apiExecutor);
     }
 
     public static Builder builder() {
@@ -100,6 +103,10 @@ public final class WxLeagueHeadSupplierClient {
 
     public SharerApi sharer() {
         return sharerApi;
+    }
+
+    public OpenTalentApi openTalent() {
+        return openTalentApi;
     }
 
     public static final class Builder {
