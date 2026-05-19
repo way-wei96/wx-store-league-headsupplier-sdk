@@ -1,21 +1,26 @@
 package com.wxstore.league.headsupplier.api;
 
+import com.wxstore.league.headsupplier.api.sharer.SharerAccountApi;
 import com.wxstore.league.headsupplier.http.ApiExecutor;
 
 /**
- * 推客带货接口（按官方文档逐步补充方法）。
+ * 推客带货接口入口（按子模块拆分）。
  *
  * @see <a href="https://developers.weixin.qq.com/doc/store/leagueheadsupplier/api/sharer/">官方文档</a>
  */
 public final class SharerApi {
 
-    private final ApiExecutor executor;
+    private final SharerAccountApi account;
 
     public SharerApi(ApiExecutor executor) {
-        this.executor = executor;
+        this.account = new SharerAccountApi(executor);
+    }
+
+    public SharerAccountApi account() {
+        return account;
     }
 
     public ApiExecutor getExecutor() {
-        return executor;
+        throw new UnsupportedOperationException("请使用各子模块 API，例如 sharer().account()");
     }
 }
