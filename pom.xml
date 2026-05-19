@@ -6,7 +6,7 @@
 
     <groupId>com.wxstore.league</groupId>
     <artifactId>wx-store-league-headsupplier-sdk</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>wx-store-league-headsupplier-sdk</name>
@@ -17,7 +17,7 @@
         <connection>scm:git:git://github.com/way-wei96/wx-store-league-headsupplier-sdk.git</connection>
         <developerConnection>scm:git:ssh://github.com/way-wei96/wx-store-league-headsupplier-sdk.git</developerConnection>
         <url>https://github.com/way-wei96/wx-store-league-headsupplier-sdk</url>
-        <tag>v0.1.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
